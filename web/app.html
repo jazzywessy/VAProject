@@ -1,0 +1,229 @@
+<html>
+<head>
+<link rel="stylesheet" href="styles/codemirror.css">
+<link rel="stylesheet" href="styles/codemirror-neo.css">
+<link rel="stylesheet" href="styles/cy2neo.css">
+<link rel="stylesheet" href="styles/neod3.css">
+<link rel="stylesheet" href="styles/datatable.css">
+<link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+<link rel="stylesheet" href="styles/sweet-alert.css">
+<link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+<title>VA Project</title>
+<style>
+.CodeMirror,#cypher {
+  display: none;
+}
+.input-group,#nodeSelected,#relationshipSelected,#jurisdictionSelected {
+    width: 300px;
+}
+#jurisdictionContainer,#relationshipContainer{
+    padding-top: 10px;
+}
+.row{
+    margin-top: 20px;
+}
+</style>
+<script src="js/connection.js"></script>
+</head>
+<body>
+      
+  <div>
+      
+    <div class="row">        
+        <div class="col">
+        <a href="index.html" title="Logo"><img src="img/mascatero_logo.png" alt="Logo" height="120" width="120" style="position:absolute;margin-left: 200px;"></a>
+        </div>
+    </div>
+    <div class="container" style="margin-left: 300px;">
+        
+      <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="input-group">
+            Search country :
+            <select id="countrySelected" class="form-control">
+            </select>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-12 col-xs-12">
+            Select node type :
+            <select id="nodeSelected" class="form-control">
+                <option value="Entity">Entity</option>
+                <option value="Intermediary" selected>Intermediary</option>
+                <option value="Officer">Officer</option>
+            </select>
+        </div>     
+        <div id="relationshipContainer" class="col-md-5 col-sm-12 col-xs-12">
+            Select relationship :
+            <select id="relationshipSelected" class="form-control">
+            </select>
+        </div>   
+        <div id="jurisdictionContainer" class="col-md-5 col-sm-12 col-xs-12">
+            Select jurisdiction :
+            <select id="jurisdictionSelected" class="form-control">
+            </select>
+        </div> 
+      </div>
+
+    </div>
+        <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
+        <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
+        </textarea>
+  </div>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
+    <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="graph">
+    	<div class="tab-pane active" id="graph">&nbsp;</div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="table">
+    	<div id="datatable"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="scripts/codemirror.js"></script>
+<script src="scripts/codemirror-cypher.js"></script>
+<script src="scripts/vendor.js"></script>
+<script src="scripts/sweet-alert.min.js"></script>
+<script src="scripts/neod3.js"></script>
+<script src="scripts/neod3-visualization.js"></script>
+<script src="scripts/neo4d3.js"></script>
+<script src="scripts/cy2neod3.js"></script>
+<script src="scripts/jquery.dataTables.min.js"></script>
+<script src="scripts/cypher.datatable.js"></script>
+<script src="scripts/tooltip.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#jurisdictionContainer').hide();
+        
+        var query = 'MATCH (n:Entity) where not n.countries contains ";" or n.countries contains "null" RETURN distinct n.countries as country order by n.countries';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var table=res.table;
+//        console.log(table);
+        var options = $("#countrySelected");
+        $.each(table, function(item) {
+//            console.log(item);
+            options.append($("<option/>").val(table[item].country).text(table[item].country));
+        });
+        });
+        
+        $( "#countrySelected" ).change(function() {
+           var searchText = $( "#countrySelected option:selected" ).val();
+            var nodeSelected = $( "#nodeSelected option:selected" ).val();
+//            console.log(nodeSelected);
+            var query = 'MATCH p=()-[r]->(n:'+ nodeSelected +') where n.countries contains "'+ searchText +'" RETURN distinct type(r) as relType LIMIT 100';
+            getAllRelTypes(query,{},function(err,res) {
+            res = res || {}
+            var table=res.table;
+    //        console.log(table);
+            var options = $("#relationshipSelected");
+            options.empty();
+                options.append($("<option/>").val("").text("Any relationship"));
+            $.each(table, function(item) {
+    //            console.log(item);
+                options.append($("<option/>").val(table[item].relType).text(table[item].relType));
+            });
+            }); 
+        });
+        
+        $( "#nodeSelected" ).change(function() {
+            var searchText = $( "#countrySelected option:selected" ).val();
+            var nodeSelected = $( "#nodeSelected option:selected" ).val();
+            var query = 'MATCH p=()-[r]->(n:'+ nodeSelected +') where n.countries contains "'+ searchText +'" RETURN distinct type(r) as relType LIMIT 100';
+            getAllRelTypes(query,{},function(err,res) {
+            res = res || {}
+            var table=res.table;
+//            console.log(table);
+            var options = $("#relationshipSelected");
+            options.empty();
+                options.append($("<option/>").val("").text("Any relationship"));
+            $.each(table, function(item) {
+//                console.log(item);
+                options.append($("<option/>").val(table[item].relType).text(table[item].relType));
+            });
+            });
+            
+            if(nodeSelected == "Entity"){
+                var searchText = $( "#countrySelected option:selected" ).val();
+                var query = 'MATCH p=()-[r]->(n:Entity) where n.countries contains "'+ searchText +'" RETURN distinct n.jurisdiction_description as jurType order by jurType LIMIT 100';
+                getAllRelTypes(query,{},function(err,res) {
+                    res = res || {}
+                    var table=res.table;
+//                    console.log(table);
+                    var options = $("#jurisdictionSelected");
+                    options.empty();
+                    $.each(table, function(item) {
+//                        console.log(item);
+                        options.append($("<option/>").val(table[item].jurType).text(table[item].jurType));
+                    });
+                });
+                $('#jurisdictionContainer').show();
+            }else{
+                $('#jurisdictionContainer').hide();                
+            }
+        });
+		//todo dynamic configuration
+		var config = {}
+	    var connection = function() { return {url:'http://'+hostname+':7474', user:'neo4j',pass:password}; }
+		new Cy2NeoD3(config,"graph","datatable","cypher","execute", connection , true);
+                
+                
+    function txUrl() {
+        var url = ("http://"+hostname+":7474" || "http://"+hostname+":7474").replace(/\/db\/data.*/,"");
+        return url + "/db/data/transaction/commit";
+    }	
+    function getAllRelTypes(query, params, cb) {
+        var auth = (("neo4j" || "") == "") ? "" : "Basic " + btoa("neo4j" + ":" + password);
+        $.ajax(txUrl(), {
+            type: "POST",
+            data: JSON.stringify({
+                statements: [{
+                        statement: query,
+                        parameters: params || {},
+                        resultDataContents: ["row", "graph"]
+                }]
+            }),
+            contentType: "application/json",
+            error: function(err) {
+                    cb(err);
+            },
+            beforeSend: function (xhr) {
+                if (auth && auth.length) xhr.setRequestHeader ("Authorization", auth);
+            },
+            success: function(res) {
+                if (res.errors.length > 0) {
+                        cb(res.errors);
+                } else {
+                    var cols = res.results[0].columns;
+                    var rows = res.results[0].data.map(function(row) {
+                            var r = {};
+                            cols.forEach(function(col, index) {
+                                    r[col] = row.row[index];
+                            });
+                            return r;
+                    });
+                    cb(null,{table:rows});
+                }
+            }
+        });
+    }
+    
+    
+    });
+</script>
+
+</body>
+</html>

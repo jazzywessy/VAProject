@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Panama Papers: A closer look into its networks in the Asia-Pacific region</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/carousel.css" rel="stylesheet" type="text/css">
+    <!--<link href="vendor/bootstrap/css/scaffolding.less" rel="stylesheet" type="text/less">-->
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="styles/codemirror.css">
+<link rel="stylesheet" href="styles/codemirror-neo.css">
+<link rel="stylesheet" href="styles/cy2neo.css">
+<link rel="stylesheet" href="styles/neod3.css">
+<link rel="stylesheet" href="styles/datatable.css">
+<!--<link rel="stylesheet" href="styles/vendor.css">  bootstrap-->
+<link rel="stylesheet" href="styles/sweet-alert.css">
+<link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+    <style>
+        #introText{
+            word-wrap: break-word;
+            text-align: center;
+            vertical-align: middle;
+            padding: 150px;
+            color: #212529;
+            font-family: monospace;
+            font-size: 20px;
+        }
+        #infoText {
+            font-family: monospace;
+            font-size: 20px;
+            height: 500px;
+            position: relative;
+            left: 150px;
+        }
+        .carousel-item{
+            padding-left: 150px;
+            padding-right: 150px;    
+        }
+        .textTitle{
+            font-family: monospace;
+            font-size: 24px;
+            text-align: center;
+            vertical-align: middle;
+            text-decoration:underline;
+        }
+        
+        #donutChart{
+            
+            height: inherit;
+            width: inherit;
+        }
+        
+        /* Add shadow effect to chart. If you don't like it, get rid of it. */
+        svg {
+            -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.3) );
+            filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.25) );
+        }
+
+        /*Styling for the lines connecting the labels to the slices*/
+        polyline{
+            opacity: .3;
+            stroke: black;
+            stroke-width: 2px;
+            fill: none;
+        }
+
+        /* Make the percentage on the text labels bold*/
+        .labelName tspan {
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* In biology we generally italicise species names. */
+        .labelName {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+/*        svg {
+            width: 100%;
+            height: 100%;
+            position: center;
+        }*/
+
+/*        .toolTip {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            position: absolute;
+            display: none;
+            width: auto;
+            height: auto;
+            background: none repeat scroll 0 0 white;
+            border: 0 none;
+            border-radius: 8px 8px 8px 8px;
+            box-shadow: -3px 3px 15px #888888;
+            color: black;
+            font: 12px sans-serif;
+            padding: 5px;
+            text-align: center;
+        }
+
+        text {
+            font: 10px sans-serif;
+            color: white;
+        }
+        text.value {
+            font-size: 120%;
+            fill: white;
+        }
+
+        .axisHorizontal path{
+            fill: none;
+        }
+
+        .axisHorizontal .tick line {
+            stroke-width: 1;
+            stroke: rgba(0, 0, 0, 0.2);
+        }
+
+        .bar {
+            fill: steelblue;
+            fill-opacity: .9;
+        }*/
+    </style>
+    <script src="js/connection.js"></script>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">The Panama Papers</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#intro">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">The Panama Papers</div>
+          <div class="intro-heading text-uppercase">A closer look into its networks in the Asia-Pacific region</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#intro">Show Me More</a>
+        </div>
+      </div>
+    </header>
+    
+        <!-- Services -->
+    <section id="intro">
+      <div class="">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div id="introText">
+                        <p style="text-decoration:underline;">Introduction</p>
+                        Jon Doe, a self-made billionaire from Singapore, wants to invest in an offshore company in hope for higher returns and an earlier retirement, but he wants it to be somewhere close to home. He finds ABC Law Firm located in the Bahamas, one of the ‘tax havens’, to help him set up his investment plan. However, does Jon knows the movement of his investments? Jon, not known for his patience for arduous administration and paperwork, does not understand the technical jargon tax laws. This visualization will help him to better understand the complexity of offshore investments within the APAC region.
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="infoText">
+                    Law Firms specialising in offshore Investments are based in countries.
+                    <div id="donutChart"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="textTitle">                        
+                        Malaysia’s offshore companies network
+                    </div>
+                    <div id="graph" style="height: 800px;"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="textTitle">    
+                        Hong Kong’s offshore companies network
+                    </div>
+                    <div id="graph2" style="height: 800px;"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="textTitle">    
+                        Singapore’s offshore companies network
+                    </div>
+                    <div id="graph3" style="height: 800px;"></div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Team -->
+    <section class="bg-light" id="team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">We love VA.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="img/team/jaz.jpg" alt="">
+              <h4>Jazreel</h4>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="img/team/jon.jpg" alt="">
+              <h4>Jon</h4>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="img/team/vic.jpg" alt="">
+              <h4>Victora</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="large text-muted">We are all in this together.</p>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="app.html">Try it out!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Los Tres Moscatero 2017</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script>
+        d3version4 = d3
+        window.d3 = null
+      </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/util.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="scripts/codemirror.js"></script>
+    <script src="scripts/codemirror-cypher.js"></script>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/sweet-alert.min.js"></script>
+    <script src="scripts/neod3.js"></script>
+    <script src="scripts/neod3-visualization.js"></script>
+    <script src="scripts/neo4d3.js"></script>
+    <script src="scripts/cy2neod3.js"></script>
+    <script src="scripts/jquery.dataTables.min.js"></script>
+    <script src="scripts/cypher.datatable.js"></script>
+    <script src="scripts/tooltip.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+<!--    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-format.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale.v1.min.js"></script>
+    <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>-->
+    <script src="scripts/index.js"></script>
+    
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        var neod3 = new Neod3Renderer();
+        
+        $( ".carousel-control-prev" ).click(function() {
+            // first graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph");
+            c.empty();
+            neod3.render("graph", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //second graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph2");
+            c.empty();
+            neod3.render("graph2", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //third graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph3");
+            c.empty();
+            neod3.render("graph3", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        getBarChart();
+        });
+        
+        $( ".carousel-control-next" ).click(function() {
+            // first graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph");
+            c.empty();
+            neod3.render("graph", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //second graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph2");
+            c.empty();
+            neod3.render("graph2", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //third graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph3");
+            c.empty();
+            neod3.render("graph3", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        getBarChart();
+        });
+        
+                
+    function txUrl() {
+        var url = ("http://"+hostname+":7474" || "http://"+hostname+":7474").replace(/\/db\/data.*/,"");
+        return url + "/db/data/transaction/commit";
+    }	
+    function getAllRelTypes(query, params, cb) {
+        var auth = (("neo4j" || "") == "") ? "" : "Basic " + btoa("neo4j" + ":" + password);
+//        console.log(auth);
+        $.ajax(txUrl(), {
+            type: "POST",
+            data: JSON.stringify({
+                statements: [{
+                        statement: query,
+                        parameters: params || {},
+                        resultDataContents: ["row", "graph"]
+                }]
+            }),
+            contentType: "application/json",
+            error: function(err) {
+                    cb(err);
+            },
+            beforeSend: function (xhr) {
+                if (auth && auth.length) xhr.setRequestHeader ("Authorization", auth);
+            },
+            success: function(res) {
+                if (res.errors.length > 0) {
+                        cb(res.errors);
+                } else {
+                    var cols = res.results[0].columns;
+                    var rows = res.results[0].data.map(function(row) {
+                            var r = {};
+                            cols.forEach(function(col, index) {
+                                    r[col] = row.row[index];
+                            });
+                            return r;
+                    });
+                    var nodes = [];
+                    var rels = [];
+                    var labels = [];
+                function findNode(nodes, id) {
+                       for (var i=0;i<nodes.length;i++) {
+                          if (nodes[i].id == id) return i;
+                       }
+                       return -1;
+                }
+                    res.results[0].data.forEach(function(row) {
+                            row.graph.nodes.forEach(function(n) {
+                               var found = nodes.filter(function (m) { return m.id == n.id; }).length > 0;
+                               if (!found) {
+                                      //n.props=n.properties;
+                                      for(var p in n.properties||{}) { n[p]=n.properties[p];delete n.properties[p];} 
+                                      delete n.properties;
+                                      nodes.push(n);
+                                      labels=labels.concat(n.labels.filter(function(l) { labels.indexOf(l) == -1 }))
+                               }
+                            });
+                            rels = rels.concat(row.graph.relationships.map(
+                                    function(r) { 
+                                       return { id: r.id, start:r.startNode, end:r.endNode, type:r.type } }
+                                    ));
+                    });
+                    cb(null,{table:rows,graph:{nodes:nodes, links:rels},labels:labels});
+                }
+            }
+        });
+    }
+    
+    function getBarChart() {
+        var query = 'MATCH (n:Entity) RETURN n.jurisdiction_description as label,count(*) as value ORDER BY value DESC LIMIT 10';
+        getAllRelTypes(query,{},function(err,res) {
+            res = res || {}
+            var graph=res.graph;
+            if (graph) {
+                var dataTable  = res.table;
+                //getData(dataTable);
+                var donutData = [];
+                var sum = 0;
+                for(var ii in dataTable) {    
+
+                    var item = dataTable[ii];
+                    sum += item.value;
+                }
+                for(var i in dataTable) {    
+
+                    var item = dataTable[i];
+
+                    donutData.push({ 
+                        "Country" : item.label,
+                        "Value"  : item.value.toString(),
+                        "Percentage" : (item.value/sum),
+                    });
+                }
+//                console.log(donutData);
+                    var donut = donutChart()
+                    .width(1000)
+                    .height(480)
+                    .cornerRadius(3) // sets how rounded the corners are on each slice
+                    .padAngle(0.015) // effectively dictates the gap between slices
+                    .variable('Percentage')
+                    .category('Country');
+                    d3version4.select('#donutChart')
+                        .datum(donutData) // bind data to the div
+                        .call(donut); // draw chart in div
+
+            } else {
+                if (err) {
+                    console.log(err);
+                    if (err.length > 0) {
+                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                    } else {
+                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                    }
+                }
+            }
+        });
+//        data = [
+//            {label:"Category 1", value:19},
+//            {label:"Category 2", value:5},
+//            {label:"Category 3", value:13},
+//            {label:"Category 4", value:17},
+//            {label:"Category 5", value:19},
+//            {label:"Category 6", value:27}
+//        ];
+
+        function getData(data) {
+            var div = d3.select("#infoText").append("div").attr("class", "toolTip");
+
+            var axisMargin = 20,
+                    margin = 40,
+                    valueMargin = 4,
+                    width = parseInt(d3.select('#infoText').style('width'), 10),
+                    height = parseInt(d3.select('#infoText').style('height'), 10),
+                    barHeight = (height-axisMargin-margin*2)* 0.4/data.length,
+                    barPadding = (height-axisMargin-margin*2)*0.6/data.length,
+                    data, bar, svg, scale, xAxis, labelWidth = 50;
+
+            max = d3.max(data, function(d) { return d.value; });
+
+            svg = d3.select('#infoText')
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+
+            bar = svg.selectAll("g")
+                    .data(data)
+                    .enter()
+                    .append("g");
+
+            bar.attr("class", "bar")
+                    .attr("cx",0)
+                    .attr("transform", function(d, i) {
+                        return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+                    });
+
+            bar.append("text")
+                    .attr("class", "label")
+                    .attr("y", barHeight / 2)
+                    .attr("dy", ".35em") //vertical align middle
+                    .text(function(d){
+                        return d.label;
+                    }).each(function() {
+                labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
+            });
+
+            scale = d3.scale.linear()
+                    .domain([0, max])
+                    .range([0, width - margin*2 - labelWidth]);
+
+            xAxis = d3.svg.axis()
+                    .scale(scale)
+                    .tickSize(-height + 2*margin + axisMargin)
+                    .orient("bottom");
+
+            bar.append("rect")
+                    .attr("transform", "translate("+labelWidth+", 0)")
+                    .attr("height", barHeight)
+                    .attr("width", function(d){
+                        return scale(d.value);
+                    });
+
+//            bar.append("text")
+//                    .attr("class", "value")
+//                    .attr("y", barHeight / 2)
+//                    .attr("dx", -valueMargin + labelWidth) //margin right
+//                    .attr("dy", ".35em") //vertical align middle
+//                    .attr("text-anchor", "end")
+//                    .text(function(d){
+//                        return (d.value);
+//                    })
+//                    .attr("x", function(d){
+//                        var width = this.getBBox().width;
+//                        return Math.max(width + valueMargin, scale(d.value));
+//                    });
+
+            bar.on("mousemove", function(d){
+                        div.style("left", d3.event.pageX-500+"px");
+                        div.style("top", d3.event.pageY-910+"px");
+                        div.style("display", "inline-block");
+                        div.html((d.label)+"<br>"+(d.value));
+                    });
+            bar.on("mouseout", function(d){
+                        div.style("display", "none");
+                    });
+
+            svg.insert("g",":first-child")
+                    .attr("class", "axisHorizontal")
+                    .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+                    .call(xAxis);
+        }
+    }
+    
+    });
+</script>
+  </body>
+
+</html>
