@@ -6,6 +6,8 @@ To begin using this app, choose one of the following options to get started:
 * Clone the repo: `git clone https://github.com/jazzywessy/VAProject.git`
 * [Fork, Clone, or Download on GitHub](https://github.com/jazzywessy/VAProject)
 
+## Server live at http://128.199.225.225/
+
 ## Usage
 
 ### Run the neo4j-community-3.3.0 server
