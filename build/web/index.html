@@ -198,21 +198,39 @@
                 </div>
                 <div class="carousel-item">
                     <div class="textTitle">                        
-                        Malaysia’s offshore companies network
+                        Malaysia’s offshore companies network, Jurisdiction in Malaysia
                     </div>
                     <div id="graph" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
+                    <div class="textTitle">                        
+                        Malaysia’s offshore companies network, Jurisdiction in Bahamas
+                    </div>
+                    <div id="graph4" style="height: 800px;"></div>
+                </div>
+                <div class="carousel-item">
                     <div class="textTitle">    
-                        Hong Kong’s offshore companies network
+                        Hong Kong’s offshore companies network, Jurisdiction in Hong Kong
                     </div>
                     <div id="graph2" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
+                    <div class="textTitle">                        
+                        Hong Kong’s offshore companies network, Jurisdiction in Bahamas
+                    </div>
+                    <div id="graph5" style="height: 800px;"></div>
+                </div>
+                <div class="carousel-item">
                     <div class="textTitle">    
-                        Singapore’s offshore companies network
+                        Singapore’s offshore companies network, Jurisdiction in Singapore
                     </div>
                     <div id="graph3" style="height: 800px;"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="textTitle">                        
+                        Singapore’s offshore companies network, Jurisdiction in Bahamas
+                    </div>
+                    <div id="graph6" style="height: 800px;"></div>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -416,6 +434,75 @@
         }
 //        if(cbResult) cbResult(res);
         });
+        
+        
+        // 4 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph4");
+            c.empty();
+            neod3.render("graph4", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //5 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph5");
+            c.empty();
+            neod3.render("graph5", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //6 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph6");
+            c.empty();
+            neod3.render("graph6", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        
         getBarChart();
         });
         
@@ -485,6 +572,73 @@
         }
 //        if(cbResult) cbResult(res);
         });
+        
+        // 4 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph4");
+            c.empty();
+            neod3.render("graph4", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //5 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph5");
+            c.empty();
+            neod3.render("graph5", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
+        //6 graph
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        getAllRelTypes(query,{},function(err,res) {
+        res = res || {}
+        var graph=res.graph;
+        if (graph) {
+            var c=$("#graph6");
+            c.empty();
+            neod3.render("graph6", c ,graph);
+        } else {
+            if (err) {
+                console.log(err);
+                if (err.length > 0) {
+                    sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                } else {
+                    sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                }
+            }
+        }
+//        if(cbResult) cbResult(res);
+        });
+        
         getBarChart();
         });
         
