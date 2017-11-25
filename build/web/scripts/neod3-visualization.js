@@ -63,7 +63,6 @@ function Neod3Renderer() {
 
             var style = {};
 
-            // dafug is this. SIMPLY NAME SHORTENER
             var prio_props = ["name", "title", "tag", "username", "lastname","caption"];
             for (var i = 0; i < nodes.length; i++) {
                 var props= nodes[i].properties = getProps(nodes[i]);
@@ -142,9 +141,9 @@ function Neod3Renderer() {
             renderer.on("mousewheel.zoom",zoomHandlers.mousewheel);
             renderer.on("mousedown.zoom",zoomHandlers.mousedown);
             renderer.on("DOMMouseScroll.zoom",zoomHandlers.DOMMouseScroll);
-//            renderer.on("touchstart.zoom",zoomHandlers.touchstart);
-//            renderer.on("touchmove.zoom",zoomHandlers.touchmove);
-//            renderer.on("touchend.zoom",zoomHandlers.touchend);
+            renderer.on("touchstart.zoom",zoomHandlers.touchstart);
+            renderer.on("touchmove.zoom",zoomHandlers.touchmove);
+            renderer.on("touchend.zoom",zoomHandlers.touchend);
         }
 
         function disableZoomHandlers() {
@@ -206,10 +205,10 @@ function Neod3Renderer() {
           return circles.exit().remove();
         }
         function keyHandler() {
-            if (d3.event.altKey || d3.event.shiftKey) {
+            if (d3.event.altKey) {
                 enableZoomHandlers();
             }
-            else {
+            else if (d3.event.shiftKey){
                disableZoomHandlers();
             }
         }
@@ -276,10 +275,10 @@ function Neod3Renderer() {
         zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
         zoomHandlers.mousedown = renderer.on("mousedown.zoom");
         zoomHandlers.DOMMouseScroll = renderer.on("DOMMouseScroll.zoom");
-//        zoomHandlers.touchstart = renderer.on("touchstart.zoom");
-//        zoomHandlers.touchmove = renderer.on("touchmove.zoom")
-//        zoomHandlers.touchend = renderer.on("touchend.zoom");
-//        disableZoomHandlers();
+        zoomHandlers.touchstart = renderer.on("touchstart.zoom");
+        zoomHandlers.touchmove = renderer.on("touchmove.zoom")
+        zoomHandlers.touchend = renderer.on("touchend.zoom");
+        //disableZoomHandlers();
 
         d3.select('body').on("keydown", keyHandler).on("keyup", keyHandler);
 
