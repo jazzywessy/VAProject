@@ -50,7 +50,7 @@
         }
         .carousel-item{
             padding-left: 150px;
-            padding-right: 150px;    
+            padding-right: 150px;
         }
         .textTitle{
             font-family: monospace;
@@ -59,13 +59,13 @@
             vertical-align: middle;
             text-decoration:underline;
         }
-        
+
         #donutChart{
-            
+
             height: inherit;
             width: inherit;
         }
-        
+
         /* Add shadow effect to chart. If you don't like it, get rid of it. */
         svg {
             -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.3) );
@@ -173,7 +173,7 @@
         </div>
       </div>
     </header>
-    
+
         <!-- Services -->
     <section id="intro">
       <div class="">
@@ -197,38 +197,38 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
+                    <div class="textTitle">
                         Malaysia’s offshore companies network, Jurisdiction in Malaysia
                     </div>
                     <div id="graph" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Malaysia’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                        Malaysia’s offshore companies network, Jurisdiction in Panama
                     </div>
                     <div id="graph4" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">    
+                    <div class="textTitle">
                         Hong Kong’s offshore companies network, Jurisdiction in Hong Kong
                     </div>
                     <div id="graph2" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Hong Kong’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                        Hong Kong’s offshore companies network, Jurisdiction in Panama
                     </div>
                     <div id="graph5" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">    
+                    <div class="textTitle">
                         Singapore’s offshore companies network, Jurisdiction in Singapore
                     </div>
                     <div id="graph3" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Singapore’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                        Singapore’s offshore companies network, Jurisdiction in Panama
                     </div>
                     <div id="graph6" style="height: 800px;"></div>
                 </div>
@@ -244,7 +244,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Team -->
     <section class="bg-light" id="team">
       <div class="container">
@@ -282,7 +282,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -361,13 +361,13 @@
 <script src="https://d3js.org/d3-scale.v1.min.js"></script>
     <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>-->
     <script src="scripts/index.js"></script>
-    
-    
+
+
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         var neod3 = new Neod3Renderer();
-        
+
         $( ".carousel-control-prev" ).click(function() {
             // first graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
@@ -390,7 +390,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //second graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -412,7 +412,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //third graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -434,10 +434,10 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
-        
+
+
         // 4 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -457,9 +457,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //5 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -479,9 +479,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //6 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -501,11 +501,11 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
-        
+
+
         getBarChart();
         });
-        
+
         $( ".carousel-control-next" ).click(function() {
             // first graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
@@ -528,7 +528,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //second graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -550,7 +550,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //third graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -572,9 +572,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         // 4 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -594,9 +594,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //5 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -616,9 +616,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //6 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -638,15 +638,15 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         getBarChart();
         });
-        
-                
+
+
     function txUrl() {
         var url = ("http://"+hostname+":7474" || "http://"+hostname+":7474").replace(/\/db\/data.*/,"");
         return url + "/db/data/transaction/commit";
-    }	
+    }
     function getAllRelTypes(query, params, cb) {
         var auth = (("neo4j" || "") == "") ? "" : "Basic " + btoa("neo4j" + ":" + password);
 //        console.log(auth);
@@ -692,14 +692,14 @@
                                var found = nodes.filter(function (m) { return m.id == n.id; }).length > 0;
                                if (!found) {
                                       //n.props=n.properties;
-                                      for(var p in n.properties||{}) { n[p]=n.properties[p];delete n.properties[p];} 
+                                      for(var p in n.properties||{}) { n[p]=n.properties[p];delete n.properties[p];}
                                       delete n.properties;
                                       nodes.push(n);
                                       labels=labels.concat(n.labels.filter(function(l) { labels.indexOf(l) == -1 }))
                                }
                             });
                             rels = rels.concat(row.graph.relationships.map(
-                                    function(r) { 
+                                    function(r) {
                                        return { id: r.id, start:r.startNode, end:r.endNode, type:r.type } }
                                     ));
                     });
@@ -708,7 +708,7 @@
             }
         });
     }
-    
+
     function getBarChart() {
         var query = 'MATCH (n:Entity) RETURN n.jurisdiction_description as label,count(*) as value ORDER BY value DESC LIMIT 10';
         getAllRelTypes(query,{},function(err,res) {
@@ -719,16 +719,16 @@
                 //getData(dataTable);
                 var donutData = [];
                 var sum = 0;
-                for(var ii in dataTable) {    
+                for(var ii in dataTable) {
 
                     var item = dataTable[ii];
                     sum += item.value;
                 }
-                for(var i in dataTable) {    
+                for(var i in dataTable) {
 
                     var item = dataTable[i];
 
-                    donutData.push({ 
+                    donutData.push({
                         "Country" : item.label,
                         "Value"  : item.value.toString(),
                         "Percentage" : (item.value/sum),
@@ -853,7 +853,7 @@
                     .call(xAxis);
         }
     }
-    
+
     });
 </script>
   </body>
