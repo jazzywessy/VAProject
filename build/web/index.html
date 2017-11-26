@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+British Virgin Islands<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -50,22 +50,22 @@
         }
         .carousel-item{
             padding-left: 150px;
-            padding-right: 150px;    
+            padding-right: 150px;
         }
         .textTitle{
             font-family: monospace;
             font-size: 24px;
             text-align: center;
             vertical-align: middle;
-            text-decoration:underline;
+            /*text-decoration:underline;*/
         }
-        
+
         #donutChart{
-            
+
             height: inherit;
             width: inherit;
         }
-        
+
         /* Add shadow effect to chart. If you don't like it, get rid of it. */
         svg {
             -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.3) );
@@ -173,7 +173,7 @@
         </div>
       </div>
     </header>
-    
+
         <!-- Services -->
     <section id="intro">
       <div class="">
@@ -186,49 +186,55 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div id="introText">
-                        <p style="text-decoration:underline;">Introduction</p>
+                        <p style="text-decoration:underline;">Located in the British Virgin Islands</p>
                         Jon Doe, a self-made billionaire from Singapore, wants to invest in an offshore company in hope for higher returns and an earlier retirement, but he wants it to be somewhere close to home. He finds ABC Law Firm located in the Bahamas, one of the ‘tax havens’, to help him set up his investment plan. However, does Jon knows the movement of his investments? Jon, not known for his patience for arduous administration and paperwork, does not understand the technical jargon tax laws. This visualization will help him to better understand the complexity of offshore investments within the APAC region.
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div id="infoText">
-                    Law Firms specialising in offshore Investments are based in countries.
+                    Top Financial Jurisdictions (based on Panama Papers)
                     <div id="donutChart"></div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Malaysia’s offshore companies network, Jurisdiction in Malaysia
+                    <div class="textTitle">
+                        <p style="text-decoration:underline;">Malaysia's Offshore Companies Network, Jurisdiction - Malaysia</p>
+                        With a jurisdiction locally in Malaysia, most investors or officers invest in multiple entities at once and would more likely to be directly involved.
                     </div>
                     <div id="graph" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Malaysia’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                        <p style="text-decoration:underline;">Malaysia's Offshore Companies Network, Jurisdiction - British Virgin Islands</p>
+                        With a jurisdiction locally in British Virgin Islands, most investors or officers invest through a corporate service providers like ABC Law Firm and they would do the work for you.
                     </div>
                     <div id="graph4" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">    
-                        Hong Kong’s offshore companies network, Jurisdiction in Hong Kong
+                    <div class="textTitle">
+                      <p style="text-decoration:underline;">Hong Kong's Offshore Companies Network, Jurisdiction - Hong Kong</p>
+                      With a jurisdiction locally in Hong Kong, most investors or officers would pool together to invest in a single entity involved.
                     </div>
                     <div id="graph2" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Hong Kong’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                      <p style="text-decoration:underline;">Hong Kong's Offshore Companies Network, Jurisdiction - British Virgin Islands</p>
+                      With a jurisdiction locally in British Virgin Islands, most investors or officers pool together to invest in a single entity. Making tracking of multiple shell companies hard to detect since they are not related at all.
                     </div>
                     <div id="graph5" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">    
-                        Singapore’s offshore companies network, Jurisdiction in Singapore
+                    <div class="textTitle">
+                      <p style="text-decoration:underline;">Singapore's Offshore Companies Network, Jurisdiction - Singapore</p>
+                      With a jurisdiction locally in Singapore, most investors or officers invest in multiple entities at once and would more likely to be directly involved.
                     </div>
                     <div id="graph3" style="height: 800px;"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="textTitle">                        
-                        Singapore’s offshore companies network, Jurisdiction in Bahamas
+                    <div class="textTitle">
+                      <p style="text-decoration:underline;">Singapore's Offshore Companies Network, Jurisdiction - British Virgin Islands</p>
+                      With a jurisdiction locally in British Virgin Islands, investors or officers usually can choose between pooling together to invest in a single entity or investing through ABC Law Firm.
                     </div>
                     <div id="graph6" style="height: 800px;"></div>
                 </div>
@@ -244,7 +250,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Team -->
     <section class="bg-light" id="team">
       <div class="container">
@@ -282,7 +288,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -361,13 +367,13 @@
 <script src="https://d3js.org/d3-scale.v1.min.js"></script>
     <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>-->
     <script src="scripts/index.js"></script>
-    
-    
+
+
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         var neod3 = new Neod3Renderer();
-        
+
         $( ".carousel-control-prev" ).click(function() {
             // first graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
@@ -390,7 +396,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //second graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -412,7 +418,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //third graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -434,10 +440,10 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
-        
+
+
         // 4 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -457,9 +463,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //5 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "British Virgin Islands" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -479,9 +485,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //6 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "British Virgin Islands" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -501,11 +507,11 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
-        
+
+
         getBarChart();
         });
-        
+
         $( ".carousel-control-next" ).click(function() {
             // first graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Malaysia" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
@@ -528,7 +534,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //second graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Hong Kong" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -550,7 +556,7 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //third graph
         var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Singapore" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
@@ -572,9 +578,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         // 4 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "British Virgin Islands" and n.countries contains "Malaysia" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -594,9 +600,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //5 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "British Virgin Islands" and n.countries contains "Hong Kong" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -616,9 +622,9 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         //6 graph
-        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Bahamas" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
+        var query = 'MATCH p=(n:Entity)-[r]-() where n.jurisdiction_description contains "Panama" and n.countries contains "Singapore" RETURN collect(p)[..10], size((n)--()) as connections order by connections desc';
         getAllRelTypes(query,{},function(err,res) {
         res = res || {}
         var graph=res.graph;
@@ -638,15 +644,15 @@
         }
 //        if(cbResult) cbResult(res);
         });
-        
+
         getBarChart();
         });
-        
-                
+
+
     function txUrl() {
         var url = ("http://"+hostname+":7474" || "http://"+hostname+":7474").replace(/\/db\/data.*/,"");
         return url + "/db/data/transaction/commit";
-    }	
+    }
     function getAllRelTypes(query, params, cb) {
         var auth = (("neo4j" || "") == "") ? "" : "Basic " + btoa("neo4j" + ":" + password);
 //        console.log(auth);
@@ -692,14 +698,14 @@
                                var found = nodes.filter(function (m) { return m.id == n.id; }).length > 0;
                                if (!found) {
                                       //n.props=n.properties;
-                                      for(var p in n.properties||{}) { n[p]=n.properties[p];delete n.properties[p];} 
+                                      for(var p in n.properties||{}) { n[p]=n.properties[p];delete n.properties[p];}
                                       delete n.properties;
                                       nodes.push(n);
                                       labels=labels.concat(n.labels.filter(function(l) { labels.indexOf(l) == -1 }))
                                }
                             });
                             rels = rels.concat(row.graph.relationships.map(
-                                    function(r) { 
+                                    function(r) {
                                        return { id: r.id, start:r.startNode, end:r.endNode, type:r.type } }
                                     ));
                     });
@@ -708,7 +714,7 @@
             }
         });
     }
-    
+
     function getBarChart() {
         var query = 'MATCH (n:Entity) RETURN n.jurisdiction_description as label,count(*) as value ORDER BY value DESC LIMIT 10';
         getAllRelTypes(query,{},function(err,res) {
@@ -719,16 +725,16 @@
                 //getData(dataTable);
                 var donutData = [];
                 var sum = 0;
-                for(var ii in dataTable) {    
+                for(var ii in dataTable) {
 
                     var item = dataTable[ii];
                     sum += item.value;
                 }
-                for(var i in dataTable) {    
+                for(var i in dataTable) {
 
                     var item = dataTable[i];
 
-                    donutData.push({ 
+                    donutData.push({
                         "Country" : item.label,
                         "Value"  : item.value.toString(),
                         "Percentage" : (item.value/sum),
@@ -853,7 +859,7 @@
                     .call(xAxis);
         }
     }
-    
+
     });
 </script>
   </body>
